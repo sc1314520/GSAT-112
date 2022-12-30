@@ -79,7 +79,6 @@ window.onload=function(){
                 .then(response => response.text())
                 .then(result => {
                   var data = JSON.parse(result);
-                  console.log(data)
                   this.depAll = data;
                 })
                 .catch(error => console.log('error', error));
@@ -97,7 +96,6 @@ window.onload=function(){
                 .then(response => response.text())
                 .then(result => {
                   var data = JSON.parse(result);
-                  console.log(data['data'])
                   this.table = data['data'];
                 
                 })

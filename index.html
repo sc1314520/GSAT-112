@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>112 學測甄試查詢一覽表</title>
+<meta name="author" content="SCLemon">
+<meta name="description" content="為即將來臨的學測做準備，理解自己的夢想科系與門檻，在最後的衝刺旅程勇往直接！！歡迎使用本系統查詢理想科系，預祝考生學測順利！！">
+<meta name="keywords" content="112學測,大學學測,學測查詢,學測查詢系統">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="👨‍💻 112 學測甄試查詢一覽表">
+<meta name="twitter:description" content="為即將來臨的學測做準備，理解自己的夢想科系與門檻，在最後的衝刺旅程勇往直接！！歡迎使用本系統查詢理想科系，預祝考生學測順利！！">
+<meta name="twitter:site" content="@">
+<meta name="twitter:creator" content="@">
+<meta name="twitter:image" content="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fstudy%2F&psig=AOvVaw29fVoLN7bH10qsxMH7PZVU&ust=1672495631339000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCIijyfHBofwCFQAAAAAdAAAAABAE">
+
+<!-- Open Graph general (Facebook, Pinterest)-->
+<meta property="og:title" content="👨‍💻 112 學測甄試查詢一覽表">
+<meta property="og:description" content="為即將來臨的學測做準備，理解自己的夢想科系與門檻，在最後的衝刺旅程勇往直接！！歡迎使用本系統查詢理想科系，預祝考生學測順利！！">
+<meta property="og:url" content="https://sc1314520.github.io/GSAT-112/">
+<meta property="og:site_name" content="sc1314520.github.io">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pexels.com%2Fsearch%2Fstudy%2F&psig=AOvVaw29fVoLN7bH10qsxMH7PZVU&ust=1672495631339000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCIijyfHBofwCFQAAAAAdAAAAABAE">
+
+<!-- CSS -->
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/vue.js"></script>
+    <script src="js/jquery2.2.3.min.js"></script>
+    <script src="js/index.js"></script>
+    <link rel="icon" href="images/cat-svgrepo-com.svg">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>112 學測甄試一覽表</title>
+</head>
+<body>
+    <div class="box" id="box">
+        <div class="title">
+            <h1>112 學測甄試查詢</h1>
+        </div>
+        <div class="filter">
+            <div class="sel">
+                學校：<select name="" id="" class="s" v-model="school">
+                        <option v-for="sfc in sh">{{sfc}}</option>
+                    </select> <br>
+                科系：<select name="" id="" class="s" v-model="department">
+                        <option v-for="dep in dp">{{dep}}</option>
+                    </select><br>
+            </div>
+            <div class="sel" style="display:none">
+                國文：<select name="" id="" class="f" v-model="ch">
+                        <option v-for="s in sc">{{s}}</option>
+                    </select>
+                英文：<select name="" id="" class="f" v-model="en">
+                        <option v-for="s in sc">{{s}}</option>
+                    </select>
+                數學A：<select name="" id="" class="f"  v-model="ma">
+                        <option v-for="s in sc">{{s}}</option>
+                    </select>
+                數學B：<select name="" id="" class="f" v-model="mb">
+                        <option v-for="s in sc">{{s}}</option>
+                    </select>
+                社會：<select name="" id="" class="f" v-model="so">
+                        <option v-for="s in sc">{{s}}</option>
+                    </select>
+                自然：<select name="" id="" class="f" v-model="se">
+                        <option v-for="s in sc">{{s}}</option>
+                    </select>
+            </div>
+            <div class="btn">
+                <button @click="getData()"><i class="fa-solid fa-magnifying-glass"></i> 查詢</button>
+            </div>
+        </div>
+        <div class="result">
+            <div class="result-title">
+                <h1>查詢結果</h1>
+                <table class="table">
+                    <tr>
+                        <th width="22%">校系</th>
+                        <th>國文</th>
+                        <th>英文</th>
+                        <th>數A</th>
+                        <th>數B</th>
+                        <th>社會</th>
+                        <th>自然</th>
+                    </tr>
+                    <tr v-if="flag && ch=='' && en==''&& ma==''&& mb==''&& so=='' && se==''" v-for="t in table2">
+                        <th width="22%">{{t[0]}}</th>
+                        <th>{{t[1]}}</th>
+                        <th>{{t[2]}}</th>
+                        <th>{{t[3]}}</th>
+                        <th>{{t[4]}}</th>
+                        <th>{{t[5]}}</th>
+                        <th>{{t[6]}}</th>
+                    </tr>
+                    <tr v-if="!flag && ch=='' && en==''&& ma==''&& mb==''&& so=='' && se==''">
+                        <th width="22%">{{table2[0]}}</th>
+                        <th>{{table2[1]}}</th>
+                        <th>{{table2[2]}}</th>
+                        <th>{{table2[3]}}</th>
+                        <th>{{table2[4]}}</th>
+                        <th>{{table2[5]}}</th>
+                        <th>{{table2[6]}}</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="img">
+        <img src="images/cat2.png" alt="">
+    </div>
+    <div class="img2">
+        <img src="images/cat2.png" alt="">
+    </div>
+</body>
+<script src="https://kit.fontawesome.com/026fbb8b51.js" crossorigin="anonymous"></script>
+</html>

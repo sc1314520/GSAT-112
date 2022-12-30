@@ -37,10 +37,15 @@
     <link rel="icon" href="images/cat-svgrepo-com.svg">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/index.css">
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
     <title>112 學測甄試一覽表</title>
 </head>
 <body>
-    <div class="box" id="box">
+    <div class="box" id="box" v-cloak>
         <div class="title">
             <h1>112 學測甄試查詢</h1>
         </div>
@@ -77,7 +82,7 @@
                 <button @click="getData()"><i class="fa-solid fa-magnifying-glass"></i> 查詢</button>
             </div>
         </div>
-        <div class="result">
+        <div class="result" v-cloak>
             <div class="result-title">
                 <h1>查詢結果</h1>
                 <table class="table">

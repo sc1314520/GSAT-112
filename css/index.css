@@ -111,6 +111,9 @@ body{
     .img,.img2{
         display: none;
     }
+    .people{
+        font-size: 12px;
+    }
     .filter{
         padding-top:5px;
         padding-bottom: 5px;

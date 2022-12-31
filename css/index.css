@@ -114,6 +114,12 @@ body{
 .github img:hover{
     cursor: pointer;
 }
+.info{
+    display: none;
+}
+.back{
+    display: none;
+}
 @media screen and (max-width:475px) {
     .box{
         width:100%;
@@ -161,5 +167,32 @@ body{
     }
     .sel{
         width: 75%;
+    }
+    .info{
+        display: block;
+        position: fixed;
+        top: 25%;
+        right:2px;
+        width: 25px;
+    }
+    .info img{
+        width: 100%;
+    }
+    .back{
+        display: block;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
+        background: brown;
+        text-align: center;
+        line-height: 30px;
+        font-size: 5px;
+        position: fixed;
+        bottom: 2%;
+        right: 2px;
+    }
+    .back a{
+        text-decoration: none;
+        color: white;
     }
 }

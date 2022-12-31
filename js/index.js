@@ -122,5 +122,5 @@ window.onload=function(){
     })
     vm.getSchoolName();
     vm.getDepartment();
-    // vm.record();
+    vm.record();
 }

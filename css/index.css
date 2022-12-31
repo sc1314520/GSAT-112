@@ -13,6 +13,10 @@ body{
     line-height: 2;
     font-size: 40px;
 }
+.people{
+    font-size: 16px;
+    line-height: 1.2;
+}
 .filter{
     width: 100%;
     margin: 0 auto;

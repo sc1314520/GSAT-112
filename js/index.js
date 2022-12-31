@@ -16,6 +16,7 @@ window.onload=function(){
             mb:'',
             so:'',
             se:'',
+            people:'',
             flag:true,
             table:[],
             // 取得校名
@@ -23,7 +24,9 @@ window.onload=function(){
             // 取得系名
             url2:'https://script.google.com/macros/s/AKfycbwNPxilubMB2N22pM7sjf-A8bx9w3xkFNr0W0Mj2xmytIOvCL2dEiYQUVnxM8Azz1ea/exec',
             // 查詢科系
-            url3:'https://script.google.com/macros/s/AKfycbw5LSPtthJQqasGSdFGJGUqQYPA8sJqwevFKGXC5ahB62aRptyZzL0XQU5xvi_DoYU/exec'
+            url3:'https://script.google.com/macros/s/AKfycbw5LSPtthJQqasGSdFGJGUqQYPA8sJqwevFKGXC5ahB62aRptyZzL0XQU5xvi_DoYU/exec',
+            // 統計人數
+            url4:'https://script.google.com/macros/s/AKfycbyE-LPI8GmrynF2-h5WJZX724paUTadFHvlku79ouTv0b_E7qIKIaMB0H0QFrJupAE/exec'
         },
         computed:{
             dp(){
@@ -100,9 +103,24 @@ window.onload=function(){
                 
                 })
                 .catch(error => console.log('error', error));
+            },
+            record(){
+                var config = {
+                    method: 'GET',
+                    redirect: 'follow'
+                };
+                fetch(this.url4, config)
+                .then(response => response.text())
+                .then(result => {
+                  var data = JSON.parse(result);
+                  this.people=data['count']
+                
+                })
+                .catch(error => console.log('error', error));
             }
         }
     })
     vm.getSchoolName();
     vm.getDepartment();
+    vm.record();
 }

@@ -84,13 +84,13 @@ body{
     border-bottom: 1px solid gray;
 }
 .img{
-    position: absolute;
+    position: fixed;
     width:350px;
     top:0;
-    right:40px;
+    right: 1px;
 }
 .img2{
-    position: absolute;
+    position: fixed;
     width:350px;
     top:0;
     left:40px;
@@ -100,6 +100,19 @@ body{
 }
 .img2>img{
     width: 100%;
+}
+.github{
+    position: absolute;
+    top: 240px;
+    right: 160px;
+    
+}
+.github img{
+    width: 50px;
+    z-index: 1000;
+}
+.github img:hover{
+    cursor: pointer;
 }
 @media screen and (max-width:400px) {
     .box{

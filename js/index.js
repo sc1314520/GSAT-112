@@ -117,6 +117,10 @@ window.onload=function(){
                 
                 })
                 .catch(error => console.log('error', error));
+            },
+            link(){
+                console.log("跳轉")
+                location.href="https://github.com/sc1314520/GSAT-112"
             }
         }
     })

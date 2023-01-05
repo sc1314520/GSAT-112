@@ -5,6 +5,8 @@ Google Sheet 資料庫： <a href="https://drive.google.com/drive/folders/12HX0V
 <hr>
 JavaScript爬蟲： <a href="https://github.com/sc1314520/GSAT-112/blob/main/gs/reptile.js">查看文件</a><br>
 <hr>
+製作日期： 2022/12/30 14:25 <br>
+最後修改： 2022/12/31 00:21 <br>
 正式發佈： 2022/12/31 02:04 <br>
-里程碑記錄：<br>
-2023/01/06 02:41 「 達成 10000 造訪人數 」
+萬人突破： 2023/01/06 02:41 <br>
+

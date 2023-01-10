@@ -64,6 +64,7 @@
         top: 28%;
         width: 75%;
         height: 330px;
+        border-radius: 10px;
     }
     .open-btn{
         font-size: 12px;
@@ -77,5 +78,8 @@
     }
     .ct>div{
         width: 96%;
+    }
+    .ctex{
+        padding-left: 2px;
     }
 }

@@ -1,6 +1,7 @@
 body{
     background-image: url(../images/bg.jpeg);
 }
+
 .box{
     background: rgba(255,255,255,0.9);
     margin-top: 20px;
@@ -12,6 +13,19 @@ body{
     text-align: center;
     line-height: 2;
     font-size: 40px;
+    position: relative;
+}
+.ar{
+    width: 90px;
+    position: absolute;
+    right:140px;
+    top:0;
+}
+.ar>img{
+    width: 100%;
+}
+.ar>img:hover{
+    cursor: pointer;
 }
 .people{
     font-size: 16px;
@@ -126,6 +140,11 @@ body{
     }
     .title{
         font-size: 28px;
+    }
+    .ar{
+        width: 45px;
+        right:5px;
+        top: 3px;
     }
     .img,.img2{
         display: none;

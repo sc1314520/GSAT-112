@@ -54,92 +54,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/vue.js"></script>
     <script src="js/jquery2.2.3.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/suggest.js"></script>
     <link rel="icon" href="images/cat-svgrepo-com.svg">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/suggest.css">
     <style>
-        [v-cloak]{
-            display: none;
-        }
+        
     </style>
-    <title>112 學測檢定項目查詢</title>
+    <title>學測二階甄試資源分享</title>
 </head>
 <body>
     <div class="box" id="box" v-cloak>
         <div class="title" id="title">
-            <h1>112 學測檢定項目查詢 <div class="people">造訪人數：<span v-text="people"></span></div></h1>
+            <h1>學測二階甄試查詢 <div class="people">造訪人數：<span v-text="people"></span></div></h1>
             <div class="ar" id="ar">
-                <img src="images/arrow.png" alt="前往二階甄試心得分享區" title="前往二階甄試心得分享區">
-            </div>
-        </div>
-        <div class="filter">
-            <div class="sel">
-                學校：<select name="" id="" class="s" v-model="school">
-                        <option v-for="sfc in sh">{{sfc}}</option>
-                    </select> <br>
-                科系：<select name="" id="" class="s" v-model="department">
-                        <option v-for="dep in dp">{{dep}}</option>
-                    </select><br>
-            </div>
-            <div class="sel" style="display:none">
-                國文：<select name="" id="" class="f" v-model="ch">
-                        <option v-for="s in sc">{{s}}</option>
-                    </select>
-                英文：<select name="" id="" class="f" v-model="en">
-                        <option v-for="s in sc">{{s}}</option>
-                    </select>
-                數學A：<select name="" id="" class="f"  v-model="ma">
-                        <option v-for="s in sc">{{s}}</option>
-                    </select>
-                數學B：<select name="" id="" class="f" v-model="mb">
-                        <option v-for="s in sc">{{s}}</option>
-                    </select>
-                社會：<select name="" id="" class="f" v-model="so">
-                        <option v-for="s in sc">{{s}}</option>
-                    </select>
-                自然：<select name="" id="" class="f" v-model="se">
-                        <option v-for="s in sc">{{s}}</option>
-                    </select>
-            </div>
-            <div class="btn" style="display: none;">
-                <button @click="getData()"><i class="fa-solid fa-magnifying-glass"></i> 查詢</button>
+                <img src="images/arrow.png" alt="前往檢定查詢頁面" title="前往檢定查詢頁面">
             </div>
         </div>
         <div class="result" v-cloak>
             <div class="result-title">
-                <h1>查詢結果</h1>
                 <table class="table">
                     <tr>
-                        <th width="22%">校系</th>
-                        <th>國文</th>
-                        <th>英文</th>
-                        <th>數A</th>
-                        <th>數B</th>
-                        <th>社會</th>
-                        <th>自然</th>
+                        <th width="30%">學校名稱</th>
+                        <th width="30%">申請科系</th>
+                        <th width="30%">造訪資源</th>
                     </tr>
-                    <tr v-if="flag && ch=='' && en==''&& ma==''&& mb==''&& so=='' && se==''" v-for="t in table2">
-                        <th width="22%">{{t[0]}}</th>
-                        <th>{{t[1]}}</th>
-                        <th>{{t[2]}}</th>
-                        <th>{{t[3]}}</th>
-                        <th>{{t[4]}}</th>
-                        <th>{{t[5]}}</th>
-                        <th>{{t[6]}}</th>
-                    </tr>
-                    <tr v-if="!flag && ch=='' && en==''&& ma==''&& mb==''&& so=='' && se==''">
-                        <th width="22%">{{table2[0]}}</th>
-                        <th>{{table2[1]}}</th>
-                        <th>{{table2[2]}}</th>
-                        <th>{{table2[3]}}</th>
-                        <th>{{table2[4]}}</th>
-                        <th>{{table2[5]}}</th>
-                        <th>{{table2[6]}}</th>
+                    <tr v-for="t in table">
+                        <th>{{t.schoolName}}</th>
+                        <th>{{t.department}}</th>
+                        <th><button class="open-btn" @click="insert(t)">查看更多</button></th>
                     </tr>
                 </table>
             </div>
         </div>
+        <div class="open" v-if="flag">
+            <div class="content">
+                <div class="ct">
+                    <div>學校：<span v-text="obj.schoolName"></span></div>
+                    <div>科系：<span v-text="obj.department"></span></div><br>
+                </div>
+                <div class="ct2">
+                    <p>考試方式：</p>
+                    <div class="ct2-c" v-text="obj.condition"></div>
+                </div>
+                <div class="ct2">
+                    <p>面試情況：</p>
+                    <div class="ct2-c" v-text="obj.level"></div>
+                </div>
+                <div class="ct2">
+                    <p>面試問題：</p>
+                    <div class="ct2-c" v-text="obj.question"></div>
+                </div>
+                <div class="ct2">
+                    <p>給學弟妹的話：</p>
+                    <div class="ct2-c" v-text="obj.feedback"></div>
+                </div>
+            </div>
+            <div class="close">
+                <button @click="close()">關閉</button>
+            </div>
+        </div>
+    </div>
+    
+
     </div>
     <div class="img">
         <img src="images/cat2.png" alt="">
@@ -150,7 +128,7 @@
     <div class="img2">
         <img src="images/cat2.png" alt="">
         <div class="github">
-            <img src="images/Instagram_icon.png.webp" onclick="location.href='https://www.instagram.com/pursue_lemon/'" alt="前往 Instagram">
+            <img src="images/Instagram_icon.png.webp" onclick="location.href='https://www.instagram.com/yoyoyomath/'" alt="前往 Instagram">
         </div>
     </div>
     <!-- 手機版 -->
@@ -159,7 +137,7 @@
             <img src="images/github.png" onclick="location.href='https://github.com/sc1314520/GSAT-112'" alt="前往 GitHub">
         </div>
         <div class="icon">
-            <img src="images/Instagram_icon.png.webp" onclick="location.href='https://www.instagram.com/pursue_lemon/'" alt="前往 Instagram">
+            <img src="images/Instagram_icon.png.webp" onclick="location.href='https://www.instagram.com/yoyoyomath/'" alt="前往 Instagram">
         </div>
     </div>
     <div class="back">

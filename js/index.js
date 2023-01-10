@@ -123,4 +123,7 @@ window.onload=function(){
     vm.getSchoolName();
     vm.getDepartment();
     vm.record();
+    document.getElementById("ar").onclick=function(){
+        window.location.href="https://sc1314520.github.io/GSAT-112/suggest.html";
+    }
 }

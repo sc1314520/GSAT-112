@@ -124,6 +124,6 @@ window.onload=function(){
     vm.getDepartment();
     vm.record();
     document.getElementById("ar").onclick=function(){
-        window.location.href="https://sc1314520.github.io/GSAT-112/suggest.html";
+        window.location.href="https://sc1314520.github.io/GSAT-112/ad.html";
     }
 }

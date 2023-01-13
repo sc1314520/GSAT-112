@@ -53,97 +53,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/vue.js"></script>
     <script src="js/jquery2.2.3.min.js"></script>
-    <script src="js/suggest.js"></script>
+    <script src="js/index.js"></script>
     <link rel="icon" href="images/cat-svgrepo-com.svg">
     <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/suggest.css">
-    <style>
-        [v-cloak]{
-            display: none;
-        }
-    </style>
-    <title>學測二階甄試資源分享</title>
+    <link rel="stylesheet" href="css/ad.css">
+    <title>網站建立成員名單</title>
 </head>
 <body>
-    <div class="box" id="box" v-cloak>
-        <div class="title" id="title">
-            <h1>學測二階甄試查詢 <div class="people">造訪人數：<span v-text="people"></span></div></h1>
-            <div class="ar" id="ar">
-                <img src="images/arrow.png" alt="前往檢定查詢頁面" title="前往檢定查詢頁面">
+    <div class="box">
+        <div class="content">
+            <div class="img">
+                <img src="images/logo2.png" alt="">
+            </div>
+            <div class="intro">
+                <h1>SCLemon 十月檸檸</h1>
+                <p>本網站的作者，以簡潔明瞭的理念創建具便利性的學測篩選器免費提供給學弟妹使用，預祝各位學測順利！！</p>
+                <div class="href"><a href="https://www.instagram.com/pursue_lemon/">前往頁面</a></div>
             </div>
         </div>
-        <div class="result" v-cloak>
-            <div class="result-title">
-                <table class="table">
-                    <tr>
-                        <th width="30%">學校名稱</th>
-                        <th width="30%">申請科系</th>
-                        <th width="30%">造訪資源</th>
-                    </tr>
-                    <tr v-for="t in table">
-                        <th>{{t.schoolName}}</th>
-                        <th>{{t.department}}</th>
-                        <th><button class="open-btn" @click="insert(t)">查看更多</button></th>
-                    </tr>
-                </table>
+        <div class="content">
+            <div class="img">
+                <img src="images/logoyoyo.jpeg" alt="">
+            </div>
+            <div class="intro">
+                <h1>YOYOYOMATH</h1>
+                <p>二階資源贊助商，本身為一名數學補教名師，深受學生的愛戴與歡迎，在個人頁面中也時常分享解題方法與資源。</p>
+                <div class="href"><a href="https://www.instagram.com/yoyoyomath/">前往頁面</a></div>
             </div>
         </div>
-        <div class="open" v-if="flag">
-            <div class="content">
-                <div class="ct">
-                    <div>學校：<span v-text="obj.schoolName"></span></div>
-                    <div class="ctex">科系：<span v-text="obj.department"></span></div><br>
-                </div>
-                <div class="ct2">
-                    <p>考試方式：</p>
-                    <div class="ct2-c" v-text="obj.condition"></div>
-                </div>
-                <div class="ct2">
-                    <p>面試情況：</p>
-                    <div class="ct2-c" v-text="obj.level"></div>
-                </div>
-                <div class="ct2">
-                    <p>面試問題：</p>
-                    <div class="ct2-c" v-text="obj.question"></div>
-                </div>
-                <div class="ct2">
-                    <p>給學弟妹的話：</p>
-                    <div class="ct2-c" v-text="obj.feedback"></div>
-                </div>
-            </div>
-            <div class="close">
-                <button @click="close()">關閉</button>
-            </div>
+        <h1 class="interval" id="interval">頁面開啟跳轉倒數 <span id="time"></span> 秒</h1>
+        <div class="change" id="change">
+            <a href="index.html">前往檢定查詢頁面</a>
+            <a href="suggest.html">前往二階資源頁面</a>
         </div>
-    </div>
-    
-
-    </div>
-    <div class="img">
-        <img src="images/cat2.png" alt="">
-        <div class="github">
-            <img src="images/github.png" onclick="location.href='https://github.com/sc1314520/GSAT-112'" alt="前往 GitHub">
-        </div>
-    </div>
-    <div class="img2">
-        <img src="images/cat2.png" alt="">
-        <div class="github">
-            <img src="images/Instagram_icon.png.webp" onclick="location.href='https://www.instagram.com/yoyoyomath/'" alt="前往 Instagram">
-        </div>
-    </div>
-    <!-- 手機版 -->
-    <div class="info">
-        <div class="icon">
-            <img src="images/github.png" onclick="location.href='https://github.com/sc1314520/GSAT-112'" alt="前往 GitHub">
-        </div>
-        <div class="icon">
-            <img src="images/Instagram_icon.png.webp" onclick="location.href='https://www.instagram.com/yoyoyomath/'" alt="前往 Instagram">
-        </div>
-    </div>
-    <div class="back">
-        <a href="#title">TOP</a>
     </div>
 </body>
-<script src="https://kit.fontawesome.com/026fbb8b51.js" crossorigin="anonymous"></script>
+<script>
+    var interval =document.getElementById("interval");
+    var time =document.getElementById("time");
+    var change=document.getElementById("change");
+    var max=6;
+    var timer=setInterval(function(){
+        if(max<=0){
+            change.style.display="block";
+            interval.style.display="none"
+            clearInterval(timer);
+        }
+        else{
+            max--;
+            time.innerText=max;
+        }
+    },1000);
+</script>
 </html>

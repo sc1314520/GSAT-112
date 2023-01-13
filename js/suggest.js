@@ -60,6 +60,6 @@ window.onload=function(){
    vm.record();
    vm.getData();
    document.getElementById("ar").onclick=function(){
-    window.location.href="https://sc1314520.github.io/GSAT-112/index.html";
+    window.location.href="https://sc1314520.github.io/GSAT-112/ad.html";
    }
 }

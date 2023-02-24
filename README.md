@@ -1,5 +1,5 @@
 # GSAT-112
-查詢 112 學年度各校系甄試一覽表 （ 因應教育版帳號停用緣故，僅開源程式碼 ）<br>
+查詢 112 學年度各校系甄試一覽表 （ 開源程式碼 ）<br>
 查詢網站(已停用）：<a href="#">點擊連結</a><br>
 資料副本（檔名：112學測)：<a href="https://drive.google.com/drive/u/1/folders/1IjWB112zXausLahpOOpwzTsEJC7-vFcx">點擊連結</a><br>
 <hr>
